@@ -100,7 +100,9 @@ require($template->get_template_dir('tpl_header.php',DIR_WS_TEMPLATE, $current_p
 }
 ?>
   <div class="col-md-<?php echo $center_col;?>">
+
 <?php require($template->get_template_dir('tpl_breadcrumb.php',DIR_WS_TEMPLATE, $current_page_base,'common'). '/tpl_breadcrumb.php');?>
+
 <?php
   if (SHOW_BANNERS_GROUP_SET3 != '' && $banner = zen_banner_exists('dynamic', SHOW_BANNERS_GROUP_SET3)) {
     if ($banner->RecordCount() > 0) {
@@ -143,9 +145,7 @@ require($template->get_template_dir('tpl_header.php',DIR_WS_TEMPLATE, $current_p
 <?php
   require($template->get_template_dir('tpl_footer.php',DIR_WS_TEMPLATE, $current_page_base,'common'). '/tpl_footer.php');
 ?>
-
 </div>
-
 <?php /* add any end-of-page code via an observer class */
   $zco_notifier->notify('NOTIFY_FOOTER_END', $current_page);
 ?>

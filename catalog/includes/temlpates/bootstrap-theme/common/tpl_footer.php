@@ -86,10 +86,10 @@ if (SHOW_FOOTER_IP == '1') {
 <?php if (false || (isset($showValidatorLink) && $showValidatorLink == true)) { ?>
 <a href="https://validator.w3.org/check?uri=<?php echo urlencode('http' . ($request_type == 'SSL' ? 's' : '') . '://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'] . (strstr($_SERVER['REQUEST_URI'], '?') ? '&' : '?') . zen_session_name() . '=' . zen_session_id()); ?>" target="_blank">VALIDATOR</a>
 <?php } ?>
+
 <?php
 /** CDN for jQuery core **/
 ?>
-
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">window.jQuery || document.write(unescape('%3Cscript type="text/javascript" src="<?php echo $template->get_template_dir('.js',DIR_WS_TEMPLATE, $current_page_base,'jscript'); ?>/jquery.min.js"%3E%3C/script%3E'));</script>
 <script src="<?php echo $template->get_template_dir('.js',DIR_WS_TEMPLATE, $current_page_base,'jscript'); ?>/bootstrap.min.js"></script>
