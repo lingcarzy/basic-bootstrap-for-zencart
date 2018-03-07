@@ -91,30 +91,30 @@ if (SHOW_FOOTER_IP == '1') {
 /** CDN for jQuery core **/
 ?>
 <script src="//code.jquery.com/jquery.min.js"></script>
-<script type="text/javascript">window.jQuery || document.write(unescape('%3Cscript type="text/javascript" src="<?php echo $template->get_template_dir('.js',DIR_WS_TEMPLATE, $current_page_base,'jscript'); ?>/jquery.min.js"%3E%3C/script%3E'));</script>
+<script>window.jQuery || document.write(unescape('%3Cscript src="<?php echo $template->get_template_dir('.js',DIR_WS_TEMPLATE, $current_page_base,'jscript'); ?>/jquery.min.js"%3E%3C/script%3E'));</script>
 <script src="<?php echo $template->get_template_dir('.js',DIR_WS_TEMPLATE, $current_page_base,'jscript'); ?>/bootstrap.min.js"></script>
 <?php
 /**
  * load all site-wide js_*.js files from includes/templates/YOURTEMPLATE/jscript, alphabetically
  */
   $directory_array = $template->get_template_part($template->get_template_dir('.js',DIR_WS_TEMPLATE, $current_page_base,'jscript'), '/^js/', '.js');
-  while(list ($key, $value) = each($directory_array)) {
-    echo '<script type="text/javascript" src="' .  $template->get_template_dir('.js',DIR_WS_TEMPLATE, $current_page_base,'jscript') . '/' . $value . '"></script>'."\n";
+  foreach($directory_array as $key => $value) {
+    echo '<script src="' .  $template->get_template_dir('.js',DIR_WS_TEMPLATE, $current_page_base,'jscript') . '/' . $value . '"></script>'."\n";
   }
 
 /**
  * load all page-specific jscript_*.js files from includes/modules/pages/PAGENAME, alphabetically
  */
   $directory_array = $template->get_template_part($page_directory, '/^js_/', '.js');
-  while(list ($key, $value) = each($directory_array)) {
-    echo '<script type="text/javascript" src="' . $page_directory . '/' . $value . '"></script>' . "\n";
+  foreach($directory_array as $key => $value) {
+    echo '<script src="' . $page_directory . '/' . $value . '"></script>' . "\n";
   }
 
 /**
  * load all site-wide jscript_*.php files from includes/templates/YOURTEMPLATE/jscript, alphabetically
  */
   $directory_array = $template->get_template_part($template->get_template_dir('.php',DIR_WS_TEMPLATE, $current_page_base,'jscript'), '/^js_/', '.php');
-  while(list ($key, $value) = each($directory_array)) {
+  foreach($directory_array as $key => $value) {
 /**
  * include content from all site-wide jscript_*.php files from includes/templates/YOURTEMPLATE/jscript, alphabetically.
  * These .PHP files can be manipulated by PHP when they're called, and are copied in-full to the browser page
@@ -125,7 +125,7 @@ if (SHOW_FOOTER_IP == '1') {
  * include content from all page-specific jscript_*.php files from includes/modules/pages/PAGENAME, alphabetically.
  */
   $directory_array = $template->get_template_part($page_directory, '/^jscript_/');
-  while(list ($key, $value) = each($directory_array)) {
+  foreach($directory_array as $key => $value) {
 /**
  * include content from all page-specific jscript_*.php files from includes/modules/pages/PAGENAME, alphabetically.
  * These .PHP files can be manipulated by PHP when they're called, and are copied in-full to the browser page

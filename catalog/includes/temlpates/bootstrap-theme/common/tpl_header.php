@@ -57,7 +57,13 @@ if (!isset($flag_disable_header) || !$flag_disable_header) {
 <?php }?>
 </ul>
 <div id="navMainSearch" class="navbar-form navbar-right">
-  <?php require(DIR_WS_MODULES . 'sideboxes/search_header.php'); ?>
+  <?php 
+  if($template_id){
+    require(DIR_WS_MODULES . 'sideboxes/'.$template_id.'/search_header.php');
+  }else{
+    require(DIR_WS_MODULES . 'sideboxes/search_header.php');
+  }
+  ?>
 </div>
 </div>
 <!--eof-navigation display-->
@@ -76,7 +82,7 @@ if (!isset($flag_disable_header) || !$flag_disable_header) {
 if (SHOW_BANNERS_GROUP_SET2 != '' && $banner = zen_banner_exists('dynamic', SHOW_BANNERS_GROUP_SET2)) {
   if ($banner->RecordCount() > 0) {
 ?>
-      <div id="headerBanner" class="banners"><?php echo zen_display_banner('static', $banner);?></div>
+      <div id="headerBanner" class="col-xs-12 banners"><?php echo zen_display_banner('static', $banner);?></div>
 <?php
   }
 }

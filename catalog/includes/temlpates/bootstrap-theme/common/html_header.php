@@ -55,22 +55,22 @@ if (!isset($lng) || (isset($lng) && !is_object($lng))) {
 }
 reset($lng->catalog_languages);
 if (sizeof($lng->catalog_languages) > 1) {
-  while (list($key, $value) = each($lng->catalog_languages)) {
+  foreach ( $lng->catalog_languages as $key => $value) {
     echo '<link rel="alternate" href="' . ($this_is_home_page ? zen_href_link(FILENAME_DEFAULT, 'language=' . $key, $request_type) : $canonicalLink . (strpos($canonicalLink, '?') ? '&amp;' : '?') . 'language=' . $key) . '" hreflang="' . $key . '" />' . "\n";
   }
 }
 // EOF hreflang for multilingual sites
 ?>
 
-<link rel="stylesheet" type="text/css" href="<?php echo $template->get_template_dir('.css',DIR_WS_TEMPLATE, $current_page_base,'css'); ?>/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo $template->get_template_dir('.css',DIR_WS_TEMPLATE, $current_page_base,'css'); ?>/bootstrap-theme.min.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo $template->get_template_dir('.css',DIR_WS_TEMPLATE, $current_page_base,'css'); ?>/font-awesome.min.css" />
+<link rel="stylesheet" href="<?php echo $template->get_template_dir('.css',DIR_WS_TEMPLATE, $current_page_base,'css'); ?>/bootstrap.min.css" />
+<link rel="stylesheet" href="<?php echo $template->get_template_dir('.css',DIR_WS_TEMPLATE, $current_page_base,'css'); ?>/bootstrap-theme.min.css" />
+<link rel="stylesheet" href="<?php echo $template->get_template_dir('.css',DIR_WS_TEMPLATE, $current_page_base,'css'); ?>/font-awesome.min.css" />
 <?php
 /**
  * load all template-specific stylesheets, named like "style*.css", alphabetically
  */
   $directory_array = $template->get_template_part($template->get_template_dir('.css',DIR_WS_TEMPLATE, $current_page_base,'css'), '/^style/', '.css');
-  while(list ($key, $value) = each($directory_array)) {
+  foreach($directory_array as $key => $value) {
     echo '<link rel="stylesheet" type="text/css" href="' . $template->get_template_dir('.css',DIR_WS_TEMPLATE, $current_page_base,'css') . '/' . $value . '" />'."\n";
   }
 /**
@@ -90,10 +90,10 @@ if (sizeof($lng->catalog_languages) > 1) {
                         '/p_' . $tmp_products_id,
                         '/' . $_SESSION['language'] . '_p_' . $tmp_products_id
                         );
-  while(list ($key, $value) = each($sheets_array)) {
+  foreach($sheets_array as $key => $value) {
     //echo "<!--looking for: $value-->\n";
     $perpagefile = $template->get_template_dir('.css', DIR_WS_TEMPLATE, $current_page_base, 'css') . $value . '.css';
-    if (file_exists($perpagefile)) echo '<link rel="stylesheet" type="text/css" href="' . $perpagefile .'" />'."\n";
+    if (file_exists($perpagefile)) echo '<link rel="stylesheet" href="' . $perpagefile .'" />'."\n";
   }
 
 /**
@@ -104,9 +104,9 @@ if (sizeof($lng->catalog_languages) > 1) {
   foreach($tmp_cats as $val) {
     $value .= $val;
     $perpagefile = $template->get_template_dir('.css', DIR_WS_TEMPLATE, $current_page_base, 'css') . '/c_' . $value . '_children.css';
-    if (file_exists($perpagefile)) echo '<link rel="stylesheet" type="text/css" href="' . $perpagefile .'" />'."\n";
+    if (file_exists($perpagefile)) echo '<link rel="stylesheet" href="' . $perpagefile .'" />'."\n";
     $perpagefile = $template->get_template_dir('.css', DIR_WS_TEMPLATE, $current_page_base, 'css') . '/' . $_SESSION['language'] . '_c_' . $value . '_children.css';
-    if (file_exists($perpagefile)) echo '<link rel="stylesheet" type="text/css" href="' . $perpagefile .'" />'."\n";
+    if (file_exists($perpagefile)) echo '<link rel="stylesheet" href="' . $perpagefile .'" />'."\n";
     $value .= '_';
   }
 
@@ -115,8 +115,8 @@ if (sizeof($lng->catalog_languages) > 1) {
  */
   $directory_array = $template->get_template_part($template->get_template_dir('.css',DIR_WS_TEMPLATE, $current_page_base,'css'), '/^print/', '.css');
   sort($directory_array);
-  while(list ($key, $value) = each($directory_array)) {
-    echo '<link rel="stylesheet" type="text/css" media="print" href="' . $template->get_template_dir('.css',DIR_WS_TEMPLATE, $current_page_base,'css') . '/' . $value . '" />'."\n";
+  foreach($directory_array as $key => $value) {
+    echo '<link rel="stylesheet" media="print" href="' . $template->get_template_dir('.css',DIR_WS_TEMPLATE, $current_page_base,'css') . '/' . $value . '" />'."\n";
   }
 
 // DEBUG: echo '<!-- I SEE cat: ' . $current_category_id . ' || vs cpath: ' . $cPath . ' || page: ' . $current_page . ' || template: ' . $current_template . ' || main = ' . ($this_is_home_page ? 'YES' : 'NO') . ' -->';
