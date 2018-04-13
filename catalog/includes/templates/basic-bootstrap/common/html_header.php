@@ -63,7 +63,6 @@ if (sizeof($lng->catalog_languages) > 1) {
 ?>
 
 <link rel="stylesheet" href="<?php echo $template->get_template_dir('.css',DIR_WS_TEMPLATE, $current_page_base,'css'); ?>/bootstrap.min.css" />
-<link rel="stylesheet" href="<?php echo $template->get_template_dir('.css',DIR_WS_TEMPLATE, $current_page_base,'css'); ?>/bootstrap-theme.min.css" />
 <link rel="stylesheet" href="<?php echo $template->get_template_dir('.css',DIR_WS_TEMPLATE, $current_page_base,'css'); ?>/font-awesome.min.css" />
 <?php
 /**
