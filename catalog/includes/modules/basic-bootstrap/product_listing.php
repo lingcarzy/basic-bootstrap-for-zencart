@@ -240,4 +240,3 @@ $zco_notifier->notify('NOTIFY_PRODUCT_LISTING_END', $current_page_base, $list_bo
   // bof: multiple products
     echo zen_draw_form('multiple_products_cart_quantity', zen_href_link(FILENAME_DEFAULT, zen_get_all_get_params(array('action')) . 'action=multiple_products_add_product', $request_type), 'post', 'enctype="multipart/form-data"');
   }
-
